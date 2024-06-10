@@ -12,6 +12,12 @@ export default function Formelrad() {
         message: ""
     })
 
+    const handleClear = (event) => {
+        event.preventDefault();
+        console.log("handleClear");
+        setValues(values => ({...values, u:"", i:"", r:"", p:"", message: ""}))
+    }
+
     const calculate = (event) => {
         event.preventDefault();
         console.log("handleSubmit")
@@ -77,6 +83,7 @@ export default function Formelrad() {
                 }
             }
         }
+    }
 
     return (
         <>
@@ -99,6 +106,7 @@ export default function Formelrad() {
                         setValues(values => ({...values, p: e.target.value}))
                     }}/>
                     <button type="submit">Calculate</button>
+                    <button style={{margin: 10}} onClick={handleClear}>Clear</button>
                     <p>{values.message}</p>
                 </form>
             </section>
